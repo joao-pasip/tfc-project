@@ -1,7 +1,7 @@
 import Jwt from '../utils/jwt';
 import UserModel from '../database/models/users.model';
 import CustomerError from '../helpers/customer.error';
-import bcryptService from '../utils/bcrypt';
+import BcryptService from '../utils/bcrypt';
 
 export default class UserService {
   static async loginService(email: string, password: string) {
@@ -11,7 +11,7 @@ export default class UserService {
       throw new CustomerError(401, 'Incorrect email or password');
     }
 
-    bcryptService.decrypt(password, userLogin.password);
+    BcryptService.decrypt(password, userLogin.password);
 
     const token = Jwt.generate({
       email,
