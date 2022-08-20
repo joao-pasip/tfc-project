@@ -60,6 +60,7 @@ MatchesModel.init({
     allowNull: false,
     field: 'in_progress',
     type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
 }, {
   // ... Outras configs
@@ -70,12 +71,12 @@ MatchesModel.init({
   timestamps: false,
 });
 
-MatchesModel.belongsTo(TeamsModel, { foreignKey: 'homeTeam', as: 'homeTeam' });
+MatchesModel.belongsTo(TeamsModel, { foreignKey: 'homeTeam', as: 'teamHome' });
 
-MatchesModel.belongsTo(TeamsModel, { foreignKey: 'awayTeam', as: 'awayTeam' });
+MatchesModel.belongsTo(TeamsModel, { foreignKey: 'awayTeam', as: 'teamAway' });
 
-TeamsModel.hasMany(MatchesModel, { foreignKey: 'homeTeam', as: 'homeTeam' });
+TeamsModel.hasMany(MatchesModel, { foreignKey: 'homeTeam', as: 'teamHome' });
 
-TeamsModel.hasMany(MatchesModel, { foreignKey: 'awayTeam', as: 'awayTeam' });
+TeamsModel.hasMany(MatchesModel, { foreignKey: 'awayTeam', as: 'teamAway' });
 
 export default MatchesModel;
