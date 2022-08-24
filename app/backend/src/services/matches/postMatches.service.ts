@@ -21,7 +21,7 @@ export default class PostMatchesService {
     const awayTeam = await TeamsModel.findOne({ where: { id: idTeamAway } });
 
     if (!homeTeam || !awayTeam) {
-      throw new CustomerError(401, 'There is no team with such id!');
+      throw new CustomerError(404, 'There is no team with such id!');
     }
 
     const matches = await MatchesModel.create(newMatche);
