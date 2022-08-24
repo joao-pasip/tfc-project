@@ -7,10 +7,6 @@ import CustomerError from '../../helpers/customer.error';
 export default class PostMatchesService {
   static async create(matcheTrue: ICreateMatche): Promise<ICreateMatche> {
     const newMatche = {
-      // homeTeam: matcheTrue.homeTeam,
-      // homeTeamGoals: matcheTrue.homeTeamGoals,
-      // awayTeam: matcheTrue.awayTeam,
-      // awayTeamGoals: matcheTrue.awayTeamGoals,
       ...matcheTrue,
       inProgress: true,
     };

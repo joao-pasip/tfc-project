@@ -4,5 +4,5 @@ export default interface ICreateMatche {
   awayTeam: number;
   homeTeamGoals: number;
   awayTeamGoals: number;
-  inProgress?: boolean;
+  inProgress: boolean;
 }
