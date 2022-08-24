@@ -18,11 +18,11 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('PATCH/matches/:id/finish', () => {
+describe('PATCH/matches/:id', () => {
   
   describe('sucess', () => {
     const responseMock = {
-      message: 'Finished',
+      message: 'Updated successfully',
     };
 
     afterEach(() => {
@@ -32,7 +32,7 @@ describe('PATCH/matches/:id/finish', () => {
     it('should return create Matches', async () => {
       sinon.stub(MatchesModel, 'update').resolves(responseMock as any);
 
-      const response = await chai.request(app).patch('/matches/:id/finish').send(responseMock);
+      const response = await chai.request(app).patch('/matches/:id').send(responseMock);
       
       expect(response.status).to.be.equal(200);
       expect(response.body).to.be.deep.equal(responseMock);
