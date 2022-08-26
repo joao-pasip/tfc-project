@@ -59,11 +59,8 @@ export default class Home {
   }
 
   static aproveitamentoHome(performanceTeams: ILeaderboard[]) {
-    const aproveitamento = (this.totalPointsHome(performanceTeams) / (((
-      this.totalVictoriesHome(performanceTeams)
-      + this.totalLossesHome(performanceTeams)
-      + this.totalDrawHome(performanceTeams)
-    ) * 3) * 100)).toFixed(2);
+    const aproveitamento = ((this.totalPointsHome(performanceTeams)
+    / (this.totalGamesHome(performanceTeams) * 3)) * 100).toFixed(2);
     return aproveitamento;
   }
 }

@@ -1,19 +1,19 @@
 import TeamsModel from '../../database/models/teams.model';
 import MatchesModel from '../../database/models/matches.model';
-import Home from '../../utils/teamsMatchesPerformancesHome';
+import Away from '../../utils/teamsMatchesPerformancesAway';
 import { ILeaderboard } from '../../interfaces/leaderboard.interface';
 
-export default class LeaderbordHome {
+export default class LeaderbordAway {
   static async performanceTeam() {
     const teamsAll = await TeamsModel.findAll({
       include: [{
-        model: MatchesModel, as: 'homeMatches', where: { inProgress: false },
+        model: MatchesModel, as: 'awayMatches', where: { inProgress: false },
       }],
     }) as ILeaderboard[];
-    const leaderboard = teamsAll.map(({ teamName, homeMatches }) => {
+    const leaderboard = teamsAll.map(({ teamName, awayMatches }) => {
       const createLeaderBoard = this.createLeaderbordAll(
         teamName,
-        homeMatches as any,
+        awayMatches as any,
       );
       return createLeaderBoard;
     });
@@ -22,19 +22,19 @@ export default class LeaderbordHome {
 
   static createLeaderbordAll(
     name: string,
-    homeMatches: ILeaderboard[],
+    awayMatches: ILeaderboard[],
   ) {
     return {
       name,
-      totalPoints: Home.totalPointsHome(homeMatches),
-      totalGames: Home.totalGamesHome(homeMatches),
-      totalVictories: Home.totalVictoriesHome(homeMatches),
-      totalDraws: Home.totalDrawHome(homeMatches),
-      totalLosses: Home.totalLossesHome(homeMatches),
-      goalsFavor: Home.totalGolsProHome(homeMatches),
-      goalsOwn: Home.totalGolsContraHome(homeMatches),
-      goalsBalance: Home.saldoDeGolsHome(homeMatches),
-      efficiency: Home.aproveitamentoHome(homeMatches),
+      totalPoints: Away.totalPointsAway(awayMatches),
+      totalGames: Away.totalGamesAway(awayMatches),
+      totalVictories: Away.totalVictoriesAway(awayMatches),
+      totalDraws: Away.totalDrawAway(awayMatches),
+      totalLosses: Away.totalLossesAway(awayMatches),
+      goalsFavor: Away.totalGolsProAway(awayMatches),
+      goalsOwn: Away.totalGolsContraAway(awayMatches),
+      goalsBalance: Away.saldoDeGolsAway(awayMatches),
+      efficiency: Away.aproveitamentoAway(awayMatches),
     };
   }
 

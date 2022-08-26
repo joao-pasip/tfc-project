@@ -1,9 +1,12 @@
 import { Router } from 'express';
-import getLeaderbord from '../../controllers/leaderboard/getLeaderbord.controller';
+import GetLeaderbord from '../../controllers/leaderboard/getLeaderbord.controller';
+import GetLeaderbordHome from '../../controllers/leaderboard/getLeaderboardHome.controller';
+import GetLeaderbordAway from '../../controllers/leaderboard/getLeaderboardAway.controller';
 
 const leaderboard = Router();
 
-leaderboard.get('/leaderboard', getLeaderbord.auxRoute);
-// leaderboard.get('/leaderboard/home', );
+leaderboard.get('/leaderboard', GetLeaderbord.auxRoute);
+leaderboard.get('/leaderboard/home', GetLeaderbordHome.leaderbordHome);
+leaderboard.get('/leaderboard/away', GetLeaderbordAway.findAll);
 
 export default leaderboard;

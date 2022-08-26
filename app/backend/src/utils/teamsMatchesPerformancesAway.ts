@@ -59,11 +59,8 @@ export default class Away {
   }
 
   static aproveitamentoAway(performanceTeams: ILeaderboard[]) {
-    const aproveitamento = (this.totalPointsAway(performanceTeams) / (((
-      this.totalVictoriesAway(performanceTeams)
-      + this.totalLossesAway(performanceTeams)
-      + this.totalDrawAway(performanceTeams)
-    ) * 3) * 100)).toFixed(2);
+    const aproveitamento = ((this.totalPointsAway(performanceTeams)
+    / (this.totalGamesAway(performanceTeams) * 3)) * 100).toFixed(2);
     return aproveitamento;
   }
 }
