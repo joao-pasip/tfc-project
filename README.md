@@ -33,7 +33,6 @@ Docker, TypeScript, Express, Sequelize, MySQL, BCryptJS, JWT, JOI, Mocha, Chai, 
   - pra começar a aplicação, (front e back) usando docker compose.
 - Copiar as informações do arquivo .env.example e criar um .env na pasta de backend
 - O Front-end pode ser acessado aqui: http://localhost:3000
-- O Back-end roda aqui: http://localhost:3011
 
 </details>
 
